@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schedules Viewer</title>
+
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    body {
+      background: #ECEFF1;
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #auth-container, #message {
+      background: white;
+      margin: 50px;
+      padding: 24px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+    #auth-container {
+      max-width: 360px;
+      margin: auto;
+      margin-top: 50px;
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 12px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #039be5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0288d1;
+    }
+    #schedules-container {
+      margin-top: 20px;
+      overflow-y: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+      padding: 8px;
+    }
+    #header {
+      display: flex;
+      justify-content: space-between;
+    }
+    #theme1, #theme2 {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="auth-container">
+    <div id="header">
+      <div>
+        <h2>Login</h2>
+      </div>
+      <button id="theme1">
+        <img src="./theme.svg" />
+      </button>
+    </div>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="login-btn">Login</button>
+    <button id="signup-btn">Sign Up</button>
+    <p id="auth-status"></p>
+  </div>
+
+  <div id="message" style="display: none;">
+    <div id="header">
+      <div>
+        <h2>Welcome</h2>
+        <h1 id="welcome-user"></h1>
+        <p>You're successfully logged in!</p>
+      </div>
+      <button id="theme2">
+        <img src="./theme.svg" />
+      </button>
+    </div>
+    
+    <button id="logout-btn">Logout</button>
+
+    <div id="schedules-container"></div>
+  </div>
+  <!-- Подключаем Firebase SDK через CDN -->
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore-compat.js"></script>
+
+  <!-- Подключаем init.js, где инициализируется firebase -->
+  <script src="./init.js"></script>  
+</body>
+</html>
